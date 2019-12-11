@@ -33,6 +33,10 @@ class User(AbstractUser):
     def shipping_address(self):
         return self.shippingaddress_set.filter(default=True).first()
 
+    @property
+    def billing_profile(self):
+        return self.billingprofile_set.filter(default=True).first()
+
     def has_shipping_address(self):
         return self.shipping_address is not None
 

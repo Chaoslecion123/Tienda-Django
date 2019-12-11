@@ -19,6 +19,9 @@ class Cart(models.Model):
     def __str__(self):
         return self.cart_id
 
+    def has_product(self):
+        return self.products.exists()
+
     def update_totals(self):
         self.update_subtotal()
         self.update_total()
