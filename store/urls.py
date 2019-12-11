@@ -7,6 +7,7 @@ from carts.urls import urlpatterns as carts_urls
 from orders.urls import urlpatterns as orders_urls
 from shipping_addresses.urls import urlpatterns as shippingaddresses_urls
 from promo_codes.urls import urlpatterns as promo_codes_urls
+from billing_profiles.urls import urlpatterns as billing_profiles_urls
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -50,9 +51,15 @@ urlpatterns = [
             promo_codes_urls,
             'promo_codes'
         ),
-        namespace='promo_codes'
-    )
-)
+        namespace='promo_codes')
+        ),
+    path('pagos/',include(
+        (
+            billing_profiles_urls,
+            'billing_profiles'
+        ),
+        namespace='billing_profiles'
+    ))
 
 ]
 

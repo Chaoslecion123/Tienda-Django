@@ -14,8 +14,12 @@
         <a class="nav-link" href="{% url 'shipping_addresses:shipping-addresses' %}">Mis Direcciones <span class="fas fa-location-arrow"></span> </a>
       </li>
 
-       <li class="nav-item {% if request.path == '/orden/listado/' %} active {% endif %}" >
+      <li class="nav-item {% if request.path == '/orden/listado/' %} active {% endif %}" >
         <a class="nav-link" href="{% url 'orders:order-list' %}">Mis Pedidos <span class="fas fa-shipping-fast"></span> </a>
+      </li>
+
+      <li class="nav-item {% if request.path == '/pagos/create/' %} active {% endif %}" >
+        <a class="nav-link" href="{% url 'billing_profiles:list' %}">Mis métodos de pago <span class="fab fa-cc-stripe"></span> </a>
       </li>
       {% endif %}
     </ul>

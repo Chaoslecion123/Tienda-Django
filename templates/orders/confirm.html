@@ -38,9 +38,14 @@
                         Código promocional
                     </div>
                     <form id="form_code" action="{% url 'promo_codes:apply_code' %}" method="get">{% csrf_token %}
-                        <input type="text" name="code" id="promo_code" value="fsdfsd" class="form-control" placeholder="código promoción">
+                        <input type="text" name="code" id="promo_code" value="{{order.promo_code}}" class="form-control" placeholder="código promoción" {% if order.promo_code %} readonly {% endif %}>
                         {% comment %} <button type="submit" class="btn btn-danger">Aplicar</button> {% endcomment %}
                     </form>
+                    <div class="text-success" id="promocode-success" style="font-size:14px">
+                        {% if order.promo_code %}
+                            Código aplicado exitosamente
+                        {% endif %}
+                    </div>
                 </div>
 
             </div>
@@ -76,10 +81,26 @@
         var input = this.code
         var code = input.value
         var url = this.action + "?code=" + code
+        var order_total = document.getElementById('order-total')
+        var div_success = document.getElementById('promocode-success')
 
         fetch(url)
             .then(response => response.json())
             .then(response => {
+                if(response.status == true){
+                    order_total.innerHTML = "$" + response.total
+
+                    div_success.classList.remove('text-danger')
+                    div_success.classList.add('text-success')
+                    div_success.innerHTML = 'Código aplicado exitosamente'
+                    input.readOnly = true
+                }else{
+                    div_success.innerHTML = 'Código no valido'
+                    div_success.classList.remove('text-success')
+                    div_success.classList.add('text-danger')
+
+                }
+
                 console.log(response.total)
             })
     });

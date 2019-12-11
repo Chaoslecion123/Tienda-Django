@@ -11,6 +11,7 @@ django = "*"
 pillow = "*"
 ipython = "*"
 python-decouple = "*"
+stripe = "*"
 
 [requires]
 python_version = "3.6"

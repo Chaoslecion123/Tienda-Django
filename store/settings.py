@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'orders',
     'shipping_addresses',
     'promo_codes',
+    'billing_profiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,6 +134,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'lfsoverop@unac.edu.pe'
 EMAIL_HOST_PASSWORD = config('USER_EMAIL_PASSWORD') #ENV
 EMAIL_USE_TLS = True
+
+
+STRIPE_PUBLIC_KEY = 'pk_test_w2yur1nc4ZbylgjXaGf913Sl00E6R1QIrh'
+STRIPE_PRIVATE_KEY = 'sk_test_1puZFfg9a8rT9DOJgzFgt73400EMn5JisS'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
