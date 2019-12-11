@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="col-3">
+        {% if object.image %}
+            <img src="{{object.image.url}}" width='200' heigth='200'>
+        {% endif  %}
+    </div>
+    <div class="col-9">
+        <div class="card-header">
+            <h1>Detalle del Producto</h1>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{object.title}}
+                </h5>
+                <p class="card-text">{{object.description}} - <span class="text-danger">$/{{object.price}}</span></p>
+            </div>
+            <div class=card-footer>
+                {% include 'carts/snippets/add.html' with object=product %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

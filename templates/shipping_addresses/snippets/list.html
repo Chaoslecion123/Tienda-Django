@@ -1,0 +1,26 @@
+<div class="card">
+    <h5 class="card-header"></h5>
+    <div class="card-body">
+        <h5 class="card-title">
+            {{object.city}} - {{object.state}} - {{object.country}}
+        </h5>
+        <div class="cart-title">{{object.reference}}</div>
+        <div class="card-title">
+            {{object.postal_code}}
+        </div>
+        {% if edit %}
+            <div class="mt-2">
+            <a href="{% url 'shipping_addresses:edit-shipping' object.pk %}" class="btn btn-info" >Editar</a>
+            {% if object.default %}
+                <div class="text-info">
+                    Direccion principal
+                </div>
+            {% else %}
+                <a href="{% url 'shipping_addresses:default' pk=object.pk %}" class="btn btn-warning">Default</a>
+                <a href="{% url 'shipping_addresses:delete-shipping' pk=object.pk %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
